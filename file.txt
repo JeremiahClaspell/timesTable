@@ -1,0 +1,20 @@
+Create a web app that quizzes you on times tables. 
+User should be able to enter number that they are wanting to practice ex 5 = 1*5 5*5 3*5
+User should be able to enter max multiplier number ex 25 will not exceed 5*25
+There should be a count down timer that starts at beginning of quiz, and stops at end of quiz. 
+number of questions should be user inputed. 
+
+Start, please enter multiple, max multiplier, number of questions. 
+
+If timer expires, end quiz and count unanswered questions wrong. If questions are completed, show seconds used. 
+
+Review questions at end of quiz. 
+
+Store inputs in variables, 
+Let multiple = multiple
+Let multiplier = multiplier
+Let questionCount = questionCount
+Let seconds = number of seconds selected
+
+HTML
+Start with entry form. on click, toggle hidden class. 
