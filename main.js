@@ -21,10 +21,36 @@ function generateStore (multiples, maxMult, questionCount){
         let question = {'multiple': multiples, 'multiplier': Math.floor(Math.random()*maxMult)}
         store.push(question); 
     }
-    console.log(store); 
+    generateQuestions(); 
+}
+
+function generateQuestions () {
+    for(let i=0; i<questionCount; i++){
+    $('#main').append('<form '+`class="question${i} question hidden"`+ '><label for="answer">' + `what is <span class="js-multiple">${store[i].multiple}</span> * <span class="js-multiplier">${store[i].multiplier}</span>` + '</label><input name="answer" id="answer" required type="number"> <button type="submit" id="js-answer-submit">Check Answer</button> </form>')
+    }
+    $('.question0').removeClass('hidden'); 
+}
+
+function checkAnswer(){
+    $('#main').on('submit', '.question', function(event){
+        event.preventDefault(); 
+        let multiple = parseInt($(this).find('.js-multiple').text()); 
+        console.log($(this)); 
+        console.log(multiple); 
+        let multiplier = parseInt($(this).find('.js-multiplier').text()); 
+        console.log(multiplier); 
+        let answer = parseInt($(this).find('#answer').val()); 
+        if(multiple*multiplier === answer) {
+            $(this).find('#js-answer-submit').text('Next Question').addClass('nextButton').parent().append('<p>True</p>') 
+        } else {
+            $(this).find('#js-answer-submit').text('Next Question').addClass('nextButton').parent().append('<p>False</p>')
+        }; 
+       
+    })
 }
 
 function handleEvents(){
     getStartingData(); 
+    checkAnswer(); 
 }
 $(handleEvents)
