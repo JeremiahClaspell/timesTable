@@ -27,17 +27,22 @@ function answeredCorrectCounter (){
 
 function generateStore (multiples, maxMult, questionCount){
     for (let i=0; i<questionCount; i++) {
-        let question = {'multiple': multiples, 'multiplier': Math.floor(Math.random()*maxMult)}
+        let question = {'multiple': multiples, 'multiplier': Math.round(Math.random()*maxMult)}
         store.push(question); 
     }
     generateQuestions(); 
 }
 
 function generateQuestions () {
+    $('.question').remove(); 
+    answeredCorrectly=0;
+    questionCounter=1;  
     for(let i=1; i<questionCount; i++){
     $('#main').append('<form '+`class="question${i} question hidden unanswered"`+ '><label for="answer">' + `what is <span class="js-multiple">${store[i].multiple}</span> * <span class="js-multiplier">${store[i].multiplier}</span>` + '</label><input name="answer" id="answer" required type="number"> <button type="submit" id="js-answer-submit">Check Answer</button> </form>')
-    }
-    $('.question1').removeClass('hidden'); 
+    }; 
+    $('.question1').removeClass('hidden');
+    $('.stats').removeClass('hidden').removeClass('endResults') 
+    questionNumber(); 
 }
 
 function checkAnswer(){
@@ -50,22 +55,20 @@ function checkAnswer(){
             $(this).find('#js-answer-submit').text('Next Question').addClass('nextButton').parent().addClass(
                 'answered'
             ).removeClass('unanswered'); 
-            $('.questionResult').removeClass('hidden').replaceWith('<p>True</p>'); 
+            $('.true').removeClass('hidden'); 
             answeredCorrectly++;  
         } else {
             $(this).find('#js-answer-submit').text('Next Question').addClass('nextButton').removeClass('unanswered').parent().addClass('answered')
-            $('.questionResult').removeClass('hidden').replaceWith('<p>False</p>')
+            $('.false').removeClass('hidden'); 
         };
-        if($('.question').hasClass('question'+(questionCount-1))){ 
-            $('#js-answer-submit').text('Finish Quiz').parent().addClass('finishQuiz');  
+        if($(this).hasClass('question'+(questionCount-1))){ 
+            $(this).find('#js-answer-submit').text('Finish Quiz').parent().addClass('finishQuiz');  
         }
         $('.answeredCorrectly').removeClass('hidden')
         questionNumber(); 
         answeredCorrectCounter();   
     })
 }
-
-//working on getting the true/false to only show 1 instince of itself, and display when triggered by the if statement. might create 2 <p> 1 with true and 1 with false is hidden until Called.
 
 function nextQuestion () {
     $('#main').on('submit', '.answered', function(event){
@@ -75,6 +78,11 @@ function nextQuestion () {
         $('.question'+questionCounter).removeClass('hidden'); 
         questionNumber(); 
         $('.questionResult').addClass('hidden')
+        if($('.true').hasClass('hidden')) {
+            $('.false').addClass('hidden'); 
+        } else {
+            $('.true').addClass('hidden'); 
+        };
     }); 
 }
 
@@ -84,7 +92,24 @@ function endQuiz(){
     $('.answeredCorrectly').addClass('results'); 
     questionCounter-=1
     questionNumber(); 
+    $('.stats').addClass('endResults'); 
+    $('.questionNumber').addClass('hidden'); 
+    $('.answeredCorrectly').text('Your score is '+answeredCorrectly+'/'+questionCounter+'!'); 
+    $('.startNewQuiz').removeClass('hidden'); 
+    $('#main').addClass('hidden'); 
 })
+}
+
+function startNew(){
+    $('.header').on('click','#startNewQuiz', function(event){
+        $('#main').removeClass('hidden')
+        $('#startingQuestionForm').removeClass('hidden')
+        $('#multiples').val(''); 
+        $('#maxMultiplier').val(''); 
+        $('.stats').addClass('hidden'); 
+        $('#startNewQuiz').addClass('hidden'); 
+        $('.answeredCorrectly').addClass('hidden'); 
+    })
 }
 
 
@@ -93,5 +118,6 @@ function handleEvents(){
     checkAnswer(); 
     nextQuestion(); 
     endQuiz(); 
+    startNew(); 
 }
 $(handleEvents)

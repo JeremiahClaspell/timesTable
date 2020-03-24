@@ -7,12 +7,13 @@
     <link href="main.css" type="text/css" rel="stylesheet"> 
 </head>
 <body>
-    <header>
+    <header class="header">
         <h1>Test your Multiplication Skills!</h1>
-        <div>
+        <div class='stats'>
             <p class="questionNumber hidden"></p>
             <p class="answeredCorrectly hidden"></p>
         </div>
+        <button type="submit" id="startNewQuiz" class="startNewQuiz hidden">Start New Quiz</button>
     </header>
     <main id="main">
         <form id="startingQuestionForm">
@@ -26,9 +27,13 @@
             <button type="submit" id="startingSubmit">Start</button>
 
         </form>
-        <div class="questionResult hidden">
-        </div>
     </main>
+    <div class="resultContainer true hidden">
+        <p class="result">True</p>
+    </div>
+    <div class="resultContainer false hidden">
+        <p class="result">False</p>
+    </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="main.js"></script>

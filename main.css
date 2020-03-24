@@ -15,7 +15,8 @@ header {
 }
 
 main {
-    background-color: #90EE90; 
+    background-color: #00BFFF;
+    opacity: 95%;
     width: 50%; 
     margin: auto; 
     padding: 1%; 
@@ -29,4 +30,26 @@ form label, form button, form input{
 
 form input{
     margin-left: 150px; 
+}
+
+.resultContainer {
+    width: 50%; 
+    padding: 1px 1%;
+    margin: auto; 
+    text-align: center; 
+    font-size: 30pt; 
+    color: white; 
+    font-family: sans-serif; 
+}
+
+.true {
+    background-color: green; 
+}
+
+.false {
+    background-color: red; 
+}
+
+.endResults {
+    border: 3px solid black; 
 }
