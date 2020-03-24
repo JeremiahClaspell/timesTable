@@ -1,3 +1,32 @@
 .hidden {
     display: none; 
 }
+
+body {
+    background-image: url("https://webstockreview.net/images/multiplication-clipart-mathematics-background.png"); 
+}
+
+header {
+    background-color: #FFFFE0; 	
+    text-align: center; 
+    width: 50%; 
+    margin: auto; 
+    padding: 1%; 
+}
+
+main {
+    background-color: #90EE90; 
+    width: 50%; 
+    margin: auto; 
+    padding: 1%; 
+}
+
+form label, form button, form input{
+    display: block; 
+    margin-left: 100px; 
+    margin-top: 10px; 
+}
+
+form input{
+    margin-left: 150px; 
+}

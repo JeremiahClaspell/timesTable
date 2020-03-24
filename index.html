@@ -10,26 +10,24 @@
     <header>
         <h1>Test your Multiplication Skills!</h1>
         <div>
-            <p>question number</p>
-            <p>timer</p>
-            <p>right/questions asked</p>
+            <p class="questionNumber hidden"></p>
+            <p class="answeredCorrectly hidden"></p>
         </div>
     </header>
     <main id="main">
         <form id="startingQuestionForm">
-            <legend>Times Tables</legend>
-            <p>Please enter the following settings:</p>
-            <label for="multiples">Multiples of</label>
+            <p>Please enter the following:</p>
+            <label for="multiples">Multiples of:</label>
             <input type="number" required placeholder="0" id="multiples" name="multiples" class="startingQuestions">
-            <label for="maxMultiplier">Max Multiplier</label>
+            <label for="maxMultiplier">Max Multiplier:</label>
             <input type="number" required placeholder="0" id="maxMultiplier" name="maxMultiplier" class="startingQuestions">
-            <label for="questionQuantity">Number of questions</label>
-            <input type="number" required placeholder="0" id="questionQuantity" name="questionQuantity" class="startingQuestions">
-            <label for="timer">Timer</label>
-            <input type="number" required placeholder="seconds" id="timer" name="timer" class="startingQuestions">
+            <label for="questionQuantity">Number of questions:</label>
+            <input type="number" required value="5" id="questionQuantity" name="questionQuantity" class="startingQuestions">
             <button type="submit" id="startingSubmit">Start</button>
 
         </form>
+        <div class="questionResult hidden">
+        </div>
     </main>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
