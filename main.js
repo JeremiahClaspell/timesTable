@@ -18,7 +18,7 @@ function getStartingData (){
 }
 
 function questionNumber (){
-    $('.questionNumber').removeClass('hidden').replaceWith('<p class="questionNumber">Question number '+questionCounter +"/"+(questionCount-1)+"</p>")
+    $('.questionNumber').removeClass('hidden').replaceWith('<p class="questionNumber">Question number '+questionCounter +"/"+(questionCount-1)+"</p>");
 }
 
 function answeredCorrectCounter (){
